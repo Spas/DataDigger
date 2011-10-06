@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+    <input_parameters>
+        
+    </input_parameters>
+    <user_parameters>
+        
+    </user_parameters>
+    <output_parameters>
+        
+    </output_parameters>
+    <realizations>
+        <realization language="C++"
+                     method=""
+                     folder=""
+                     file=""
+                     type="src">
+            
+        </realization>
+    </realizations>
+</module>
