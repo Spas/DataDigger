@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element>
+    <input_parameters>
+        <var type="table" name="data" />
+    </input_parameters>
+    <user_parameters>
+        
+    </user_parameters>
+    <output_parameters>
+        
+    </output_parameters>
+    <realizations>
+        <realization language="R"
+                     method="select_attributes">
+            <param type="array">attributes</param>
+        </realization>
+        <realization language="Python"
+                     method="select_attributes">
+            <param type="array">attributes</param>
+        </realization>
+    </realizations>
+    <output>
+        <var type="table" name="data" />
+    </output>
+</element>
