@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<element>
+<module>
     <input_parameters>
-        <var type="table" name="data" />
+        <var type="table" name="data" /><!-- Какой тип передаваемых данных? -->
     </input_parameters>
     <user_parameters>
-        
+        <var type="string[]" name="attributes" />
     </user_parameters>
     <output_parameters>
-        
+        <var type="table" name="data" /><!-- Какой тип возвращаемых данных? -->
     </output_parameters>
     <realizations>
         <realization language="R"
-                     method="select_attributes">
-            <param type="array">attributes</param>
+                     method="select_attributes"
+                     folder="r"
+                     file="attributes_selection.r">
+            <param type="string[]">attributes</param>
         </realization>
         <realization language="Python"
-                     method="select_attributes">
-            <param type="array">attributes</param>
+                     method="select_attributes"
+                     folder="python"
+                     file="attributes_selection.py">
+            <param type="string[]">attributes</param>
         </realization>
     </realizations>
-    <output>
-        <var type="table" name="data" />
-    </output>
-</element>
+</module>
