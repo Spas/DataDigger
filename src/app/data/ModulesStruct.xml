@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <group id='data_import' title="Data import" folder="data_import" icon="selected.svg">
+    <group id='data_import' name="Data import" folder="data_import" icon="selected.svg">
         Data loading modules
         <group id='import_from_file'
-               title="Import from file"
+               name="Import from file"
                folder="from_file"
                icon="">
             Modules for loading data from files
             <module id="csv_file"
-                    title="csv file"
+                    name="csv file"
                     folder="csv"
                     file="csv.xml"
                     icon="csv.svg">
@@ -17,55 +17,55 @@
         </group>
     </group>
     <group id="data_preprocessing"
-           title="Data preprocessing"
+           name="Data preprocessing"
            folder="data_preprocessing"
            icon="">
         <module id="attributes_selection"
-                title="Attributes selection"
+                name="Attributes selection"
                 folder="attributes_selection"
                 file="attributes_selection.xml"
                 icon="">
             Module for selecting attributes for processing
         </module>
         <module id="relief"
-                title="Relief algorithm"
+                name="Relief algorithm"
                 file="">
             Relief algorithm realization
         </module>
     </group>
     <group id="data_processing"
-           title="Data processing"
+           name="Data processing"
            folder="data_processing"
            icon="">
         <group id="classification"
-               title="Classification"
+               name="Classification"
                folder="classification"
                icon="">
                    
         </group>
         <group id="clusterization"
-               title="Clusterization"
+               name="Clusterization"
                folder="clusterization"
                icon="">
 
         </group>
     </group>
     <group id="data_displaying"
-           title="Data displaying"
+           name="Data displaying"
            folder="data_displaying"
            icon="">
         <group id="graphic"
-               title="Graphic"
+               name="Graphic"
                folder="graphic"
                icon="">
         </group>
         <group id="diagram"
-               title="Diagram"
+               name="Diagram"
                folder="diagram"
                icon="">
         </group>
         <module id="table_view"
-                title="table"
+                name="table"
                 file="table.xml"
                 icon="">
             Module for diplaying data as table

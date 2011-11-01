@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
+    <!-- Here are all-realizations necessary parameters -->
     <input_parameters>
-        
+        <parameter name="features_names" type="string[]"></parameter>
+        <parameter name="data" type="float[][]"></parameter>
     </input_parameters>
     <user_parameters>
-        
+        <parameter name="iterations_count" type="int"></parameter>
     </user_parameters>
     <output_parameters>
-        
+        <parameter name="features_names" type="string[]"></parameter>
+        <parameter name="data" type="float[][]"></parameter>
+        <parameter name="features_weights" type="float[]"></parameter>
     </output_parameters>
+    <!-- -->
     <realizations>
         <realization language="C++"
-                     method=""
-                     folder=""
-                     file=""
+                     method="use_relief"
+                     folder="relief_c"
+                     file="relief.c"
                      type="src">
-            
+            <!-- We can add additional important parameters to any realization -->
+            <input_parameters>
+                <parameter name="features_count" type="int"></parameter>
+                <parameter name="strings_count" type="int"></parameter>
+            </input_parameters>
         </realization>
     </realizations>
 </module>

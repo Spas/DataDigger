@@ -6,4 +6,10 @@ __author__="spas"
 __date__ ="$29.09.2011 11:19:07$"
 
 class ModuleRealizationsList():
-    pass
+
+    def __init__(self):
+        self._realizations = {}
+        pass
+
+    def addRealization(self, realization):
+        pass

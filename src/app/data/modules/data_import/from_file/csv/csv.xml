@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <element title="csv file">
     <form>
-        <input id="data_file" title="Csv file:" type="file" />
-        <input id="delimiter" title="Delimiter:" type="text" default="," />
+        <input id="data_file" name="Csv file" type="file" />
+        <input id="delimiter" name="Delimiter" type="text" default="," />
     </form>
     <realizations>
         <realization language="python" method="csv_reader.py">

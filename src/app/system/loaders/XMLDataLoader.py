@@ -1,12 +1,15 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
+from lxml import etree
 
 __author__="spas"
 __date__ ="$29.09.2011 11:18:09$"
 
+"""
+@desc Class for data loading from xml file
+"""
 class XMLDataLoader():
+    """
+    @param file_url: string
+    @return lxml.etree
+    """
     def loadDataFromFile(self, file_url):
-        """
-        @param file_url: string
-        @return lxml.etree
-        """
+        return etree.parse(file_url)
