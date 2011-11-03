@@ -12,12 +12,14 @@ class Parameter:
         self._type = ''
         self._default = ''
         self._description = ''
+        self._value = ''
 
-    def getDataFromLxml(self, lxml_node):
+    def getBaseDataFromLxml(self, lxml_node):
         self._id = lxml_node.get('id')
         self._name = lxml_node.get('name')
         self._type = lxml_node.get('type')
         self._default = lxml_node.get('default')
+        self._value = self._default
         self._description = lxml_node.text
 
     def getId(self):
@@ -34,3 +36,10 @@ class Parameter:
 
     def getDescription(self):
         return self._description
+
+    def setValue(self, value):
+        self._value = value
+        return value
+
+    def getValue(self):
+        return self._value

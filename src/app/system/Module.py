@@ -5,12 +5,14 @@
 __author__="spas"
 __date__ ="$31.10.2011 18:24:01$"
 
+from app.system.config.xml import *
+
 class Module():
-    modules = {}
+    Modules = {}
 
     def __init__(self):
-        self._base_data_loaded = false
-        self._full_data_loaded = true
+        self._base_data_loaded = False
+        self._full_data_loaded = True
 
         self._id = ''
         self._name = ''
@@ -19,78 +21,85 @@ class Module():
         self._icon = ''
         self._description = ''
 
-        self._inputParametersData = {}
-        self._userParametersData = {}
-        self._ouputParametersData = {}
+        self._input_parameters = {}
+        self._user_parameters = {}
+        self._ouput_parameters = {}
 
-        self._realizationsData = {}
+        self._realizations = {}
 
     def getBaseDataFromLxml(self, lxml_node):
-        self._id = lxml_node.get('id')
-        self._name = lxml_node.get('name')
-        self._folder = lxml_node.get('folder')
-        self._file = lxml_node.get('file')
-        self._icon = lxml_node.get('icon')
+        self._id = lxml_node.get(MODULE_ATTRIBUTE_ID)
+        self._name = lxml_node.get(MODULE_ATTRIBUTE_NAME)
+        self._folder = lxml_node.get(MODULE_ATTRIBUTE_FOLDER)
+        self._file = lxml_node.get(MODULE_ATTRIBUTE_FILE)
+        self._icon = lxml_node.get(MODULE_ATTRIBUTE_ICON)
         self._description = lxml_node.text
-        self._base_data_loaded = true
+        self._base_data_loaded = True
 
-        ModuleData.modules[self._id] = self
+        Module.Modules[self._id] = self
 
     def getFullDataFromLxml(self, lxml_node):
         for child_node in lxml_node:
-            if child_node.tag == 'input_parameters':
+            if child_node.tag == INPUT_PARAMETERS_TAG:
                 for parameter_node in child_node:
-                    parameterData = ParameterData()
-                    parameterData.getDataFromLxml(parameter_node)
-                    self._inputParametersData[parameterData.getId()] = parameterData
-            if child_node.tag == 'output_parameters':
+                    parameter = parameter()
+                    parameter.getBaseDataFromLxml(parameter_node)
+                    self._input_parameters[parameter.getId()] = parameter
+            if child_node.tag == OUTPUT_PARAMETERS_TAG:
                 for parameter_node in child_node:
-                    parameterData = ParameterData()
-                    parameterData.getDataFromLxml(parameter_node)
-                    self._outputParametersData[parameterData.getId()] = parameterData
-            if child_node.tag == 'user_parameters':
+                    parameter = parameter()
+                    parameter.getBaseDataFromLxml(parameter_node)
+                    self._outputParametersData[parameter.getId()] = parameter
+            if child_node.tag == USER_PARAMETERS_TAG:
                 for parameter_node in child_node:
-                    parameterData = ParameterData()
-                    parameterData.getDataFromLxml(parameter_node)
-                    self._userParametersData[parameterData.getId()] = parameterData
-            if child_node.tag == 'realizations':
+                    parameter = parameter()
+                    parameter.getBaseDataFromLxml(parameter_node)
+                    self._user_parameters[parameter.getId()] = parameter
+            if child_node.tag == REALIZATIONS_TAG:
                 for realization_node in child_node:
-                    realizationData = RealizationData()
-                    realizationData.getDataFromLxml(realization_node)
-                    self._realizationsData[realizationData.getId()] = realizationData
+                    realization = realization()
+                    realization.getBaseDataFromLxml(realization_node)
+                    self._realizations[realization.getId()] = realization
 
-def getId(self):
-    return self._id;
+    def getId(self):
+        return self._id;
 
-def getName(self):
-    return self._name;
+    def getName(self):
+        return self._name;
 
-def getFolder(self):
-    return self._folder;
+    def getFolder(self):
+        return self._folder;
 
-def getFile(self):
-    return self._file;
+    def getFile(self):
+        return self._file;
 
-def getIcon(self):
-    return self._icon;
+    def getIcon(self):
+        return self._icon;
 
-def getInputParameters(self):
-    return self._inputParametersData
+    def getInputParameters(self):
+        return self._input_parameters
 
-def getInputParameterById(self, parameter_id):
-    if self._inputParametersData.has_key(parameter_id):
-        return self._inputParametersData[parameter_id]
+    def getInputParameterById(self, parameter_id):
+        if self._input_parameters.has_key(parameter_id):
+            return self._input_parameters[parameter_id]
 
-def getUserParameters(self):
-    return self._userParametersData
+    def getUserParameters(self):
+        return self._user_parameters
 
-def getUserParameterById(self):
-    if self._userParametersData.has_key(parameter_id):
-        return self._userParametersData[parameter_id]
+    def getUserParameterById(self):
+        if self._user_parameters.has_key(parameter_id):
+            return self._user_parameters[parameter_id]
 
-def getUserParameters(self):
-    return self._outputParametersData
+    def getOutputParameters(self):
+        return self._outputParametersData
 
-def getUserParameterById(self):
-    if self._outputParametersData.has_key(parameter_id):
-        return self._outputParametersData[parameter_id]
+    def getOutputParameterById(self):
+        if self._outputParametersData.has_key(parameter_id):
+            return self._outputParametersData[parameter_id]
+
+    def getRealizations(self):
+        return self._realizations
+
+    def getRealizationById(self, realization_id):
+        if self._realizations.has_key(realization_id):
+            return self._realizations[realization_id]

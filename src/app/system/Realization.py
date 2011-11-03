@@ -25,14 +25,36 @@ class Realization:
 
         self._description = ''
 
-    def getDataFromLxml(self, lxml_node):
-        self._id = lxml_node.get('id')
-        self._name = lxml_node.get('name')
-        self._folder = lxml_node.get('folder')
-        self._main_file = lxml_node.get('main_file')
-        self._language = lxml_node.get('language')
-        self._type = lxml_node.get('type')
-        self._method = lxml_node.get('method')
+        # Additional parameters, required for current realization of module
+        self._input_parameters = {}
+        self._user_parameters = {}
+        self._output_parameters = {}
+
+    def getBaseDataFromLxml(self, lxml_node):
+        self._id = lxml_node.get(REALIZATION_ATTRIBUTE_ID)
+        self._name = lxml_node.get(REALIZATION_ATTRIBUTE_NAME)
+        self._folder = lxml_node.get(REALIZATION_ATTRIBUTE_FOLDER)
+        self._main_file = lxml_node.get(REALIZATION_ATTRIBUTE_FILE)
+        self._language = lxml_node.get(REALIZATION_ATTRIBUTE_LANGUAGE)
+        self._type = lxml_node.get(REALIZATION_ATTRIBUTE_TYPE)
+        self._method = lxml_node.get(REALIZATION_ATTRIBUTE_METHOD)
+
+        for child_node in lxml_node:
+            if child_node.tag == INPUT_PARAMETERS_TAG:
+                for parameter_node in child_node:
+                    parameter = parameter()
+                    parameter.getBaseDataFromLxml(parameter_node)
+                    self._input_parameters[parameter.getId()] = parameter
+            if child_node.tag == OUTPUT_PARAMETERS_TAG:
+                for parameter_node in child_node:
+                    parameter = parameter()
+                    parameter.getBaseDataFromLxml(parameter_node)
+                    self._output_parameters[parameter.getId()] = parameter
+            if child_node.tag == USER_PARAMETERS_TAG:
+                for parameter_node in child_node:
+                    parameter = parameter()
+                    parameter.getBaseDataFromLxml(parameter_node)
+                    self._user_parameters[parameter.getId()] = parameter
         self._description = lxml_node.text
 
     def getId(self):
@@ -54,4 +76,25 @@ class Realization:
         return self._type
 
     def getMethod(self):
-        return self._method   
+        return self._method
+
+    def getInputParameters(self):
+        return self._input_parameters
+
+    def getInputParameterById(self, parameter_id):
+        if self._input_parameters.has_key(parameter_id):
+            return self._input_parameters[parameter_id]
+
+    def getUserParameters(self):
+        return self._user_parameters
+
+    def getUserParameterById(self):
+        if self._user_parameters.has_key(parameter_id):
+            return self._user_parameters[parameter_id]
+
+    def getOutputParameters(self):
+        return self._outputParametersData
+
+    def getOutputParameterById(self):
+        if self._outputParametersData.has_key(parameter_id):
+            return self._outputParametersData[parameter_id]
