@@ -43,6 +43,10 @@ class ModulesFactory():
             return Module.Modules[module_id]
 
     @staticmethod
+    def getModulesIds():
+        return Module.Modules.keys()
+
+    @staticmethod
     def getBaseGroups():
         return ModulesFactory.Base_groups
     

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element title="read data from csv file">
+    <form>
+        <input id="data_file" name="Csv file" type="file" />
+        <input id="delimiter" name="Delimiter" type="text" default="," />
+    </form>
+    <realizations>
+        <realization language="c" method="read_from_csv">
+            <param id="file_name" name="File name" type="string">file_url</param>
+            <param id="delimiter" name="Items delimiter" default="," type="string">delimiter</param>
+            <param id="rows_count" name="Rows count"></param>
+            <param id="columns_count" name="Columns count"></param>
+            <param id="columns_names" name="Array of columns names"></param>
+        </realization>
+    </realizations>
+</element>

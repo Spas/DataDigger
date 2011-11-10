@@ -7,8 +7,8 @@
                folder="from_file"
                icon="">
             Modules for loading data from files
-            <module id="csv_file"
-                    name="csv file"
+            <module id="csv_file_read"
+                    name="read data from csv file"
                     folder="csv"
                     file="csv.xml"
                     icon="csv.svg">
@@ -49,6 +49,18 @@
                icon="">
 
         </group>
+    </group>
+    <group id="data_write"
+           name="Write data to file"
+           folder="data_export">
+           Modules for writing data to files
+           <module id="csv_file_write"
+                    name="Write data to csv file"
+                    folder="csv"
+                    file="csv.xml"
+                    icon="csv.svg">
+                Module for writing data to *.csv files
+            </module>
     </group>
     <group id="data_displaying"
            name="Data displaying"

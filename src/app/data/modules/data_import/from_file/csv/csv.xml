@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<element title="csv file">
+<element title="read data from csv file">
     <form>
         <input id="data_file" name="Csv file" type="file" />
         <input id="delimiter" name="Delimiter" type="text" default="," />
     </form>
     <realizations>
-        <realization language="python" method="csv_reader.py">
-            <param title="File name">file_url</param>
-            <param title="Items delimiter" default=",">delimiter</param>
-        </realization>
+        
     </realizations>
     <output>
-        <var type="table" name="data" />
+        <param type="string[]" name="columns_names" />
+        <param type="float[]" name="data" />
+        <param type="int" name="rows_count" />
+        <param type="int" name="columns_count" />
     </output>
 </element>

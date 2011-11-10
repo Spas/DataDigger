@@ -4,20 +4,27 @@ __date__ ="$29.09.2011 11:16:48$"
 from copy import copy
 
 class SchemeElement():
-    def __init__(self):
+    def __init__(self, module = None, realization = None):
         self._id = ''
         self._name = ''
         self._description = ''
 
-        self._module = None
-        self._realization = None
-
         self._next_elements = {}
         self._prev_elements = {}
 
-        self._input_parameters = None
-        self._user_parameters = None
-        self._output_parameters = None
+        if module == None:
+            self._module = None
+            self._realization = None
+
+            self._input_parameters = None
+            self._user_parameters = None
+            self._output_parameters = None
+        else:
+            self.setModule(module)
+            if realization == None:
+                self._realization = None
+            else:
+                self.setRealization(realization)
 
     """
     @param name: string
@@ -53,6 +60,7 @@ class SchemeElement():
     """
     def setModule(self, module):
         self._module = module
+        self._initParameters()
         return module
 
     """
@@ -135,12 +143,11 @@ class SchemeElement():
             del self._prev_elements[scheme_element_id]
 
     """
-    @desc Load user, input and output parameters lists from element`s
+    @desc Load input, user and output parameters from element`s
           module. Return False if module isn`t defined.
     @return bool
     """
-
-    def initParameters(self):
+    def _initParameters(self):
         if self._module != None:
             self._input_parameters = copy(self._module.getInputParameters())
             self._user_parameters = copy(self._module.getUserParameters())

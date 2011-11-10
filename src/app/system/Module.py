@@ -100,6 +100,18 @@ class Module():
     def getRealizations(self):
         return self._realizations
 
+    def getRealizationByLanguage(self, language, type = None):
+        if type != None:
+            for realization_id in self._realizations:
+                if self._realizations[realization_id].getLanguage() == language \
+                   and self._realizations[realization_id].getType() == type:
+                    return self._realizations[realization_id]
+        else:
+            for realization_id in self._realizations:
+                if self._realizations[realization_id].getLanguage() == language:
+                    return self._realizations[realization_id]
+
+
     def getRealizationById(self, realization_id):
         if self._realizations.has_key(realization_id):
             return self._realizations[realization_id]

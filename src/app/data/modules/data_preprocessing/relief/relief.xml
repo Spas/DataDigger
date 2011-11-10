@@ -15,12 +15,13 @@
     </output_parameters>
     <!-- -->
     <realizations>
-        <realization language="C++"
-                     method="use_relief"
+        <realization id="relief_c"
+                     language="C"
+                     type="src"
                      folder="relief_c"
                      file="relief.c"
-                     type="src">
-            <!-- We can add additional important parameters to any realization -->
+                     method="use_relief">
+            <!-- We can add important parameters to any realization -->
             <input_parameters>
                 <parameter name="features_count" type="int"></parameter>
                 <parameter name="strings_count" type="int"></parameter>
